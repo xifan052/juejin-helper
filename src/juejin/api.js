@@ -59,6 +59,17 @@ class Api {
   }
 
   /**
+   * @desc 抽奖
+   * @returns {Promise<*>}
+   * {
+   *   lottery_name: String 奖品名称
+   * }
+   */
+  drawLottery() {
+    return this.http.post('/growth_api/v1/lottery/draw?aid=')
+  }
+
+  /**
    * @desc 当前矿石数
    * @returns {Promise<*>}
    * Number 矿石数量
