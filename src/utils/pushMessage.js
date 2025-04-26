@@ -2,7 +2,8 @@ const email = require('./email.js')
 const pushplus = require('./pushplus.js')
 const dingding = require('./dingding.js')
 const feishu = require('./feishu.js')
-const { EMAIL, AUTHORIZATION_CODE, PUSHPLUS_TOKEN, DINGDING_WEBHOOK, FEISHU_WEBHOOK } = require('../ENV.js')
+const wxwork = require('./wxwork.js')
+const { EMAIL, AUTHORIZATION_CODE, PUSHPLUS_TOKEN, DINGDING_WEBHOOK, FEISHU_WEBHOOK, WXWORK_WEBHOOK } = require('../ENV.js')
 
 const pushMessage = ({ type, message }) => {
   console.log(message)
@@ -37,7 +38,15 @@ const pushMessage = ({ type, message }) => {
   FEISHU_WEBHOOK &&
     feishu(
       formatter(type, message, {
-        style: 'markdown',
+        style: "markdown",
+        bold: true,
+      })
+    )
+
+  WXWORK_WEBHOOK &&
+    wxwork(
+      formatter(type, message, {
+        style: "markdown",
         bold: true,
       })
     )
