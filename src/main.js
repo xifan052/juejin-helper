@@ -85,4 +85,12 @@ main().catch(error => {
     type: 'error',
     message: error.stack,
   })
+  if(error.stack){
+    return
+  }
+  if(error.data){
+    console.log(error.data)
+  }else{
+    console.log(error)
+  }
 })
