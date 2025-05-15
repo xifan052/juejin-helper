@@ -81,16 +81,9 @@ const main = async () => {
 }
 
 main().catch(error => {
+  console.log(error)
   pushMessage({
     type: 'error',
-    message: error.stack,
+    message: error.stack || error.data || error.err_msg || '签到失败，未捕获到异常消息',
   })
-  if(error.stack){
-    return
-  }
-  if(error.data){
-    console.log(error.data)
-  }else{
-    console.log(error)
-  }
 })
