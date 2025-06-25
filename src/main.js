@@ -80,10 +80,16 @@ const main = async () => {
   })
 }
 
-main().catch(error => {
-  console.log(error)
+main().catch((error) => {
+  console.log('catch===>', error)
+  console.log('error===>', error.stack)
   pushMessage({
     type: 'error',
-    message: error.stack || error.data || error.err_msg || '签到失败，未捕获到异常消息',
+    message:
+      error.stack ||
+      error.data ||
+      error.err_msg ||
+      error ||
+      '签到失败，未捕获到异常消息',
   })
 })
